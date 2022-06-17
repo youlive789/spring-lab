@@ -10,6 +10,9 @@ class SecurityConfig {
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http.csrf().disable()
         http.httpBasic().disable()
+
+        http.authorizeRequests().antMatchers("/*").permitAll()
+        http.headers().frameOptions().disable()
         return http.build()
     }
 }
